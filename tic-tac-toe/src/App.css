@@ -1,3 +1,53 @@
+body {
+  background-color: #1A191E;
+  color: #ACB5BA;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  font-family: Arial;
+  text-align: center;
+  
+}
+
+.box{
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+}
+
+.row{
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.Item{
+	width: 9vw;
+	height: 9vw;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+.head{
+	width: 100%;
+	text-align: center;
+}
+.foot{
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+}
+
+#headerP{
+	font-size:2.5em;
+}
+#footerP{
+	font-size:0.7em;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +64,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +84,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 1000px) {
+	.Item{
+	width: 13vw;
+	height: 13vw;}
+	#headerP{font-size:3em;}
+	#footerP{font-size:0.75em;}
+	
+}
+
+
+@media only screen and (max-width: 600px) {
+	.Item{
+	width: 18vw;
+	height: 18vw;}
+	#headerP{font-size:3.35em;}
+	#footerP{font-size:0.75em;}
+	
 }
