@@ -9,17 +9,11 @@ const Item = styled(Paper)(({ theme }) => ({
 	color: theme.palette.text.primary ,
 }));
 
-class block extends Component{
-	
-}
-
-function FormBlock() {
+function FormBlock({blockid, value, handleClick}) {
   return (
-	<React.Fragment>
     <div>
-		<Item className="Item" sx={{ bgcolor: '#ACB5BA' }}>Testing</Item>
+		<Item className="Item" sx={{ bgcolor: '#ACB5BA' }} onClick={() => handleClick(blockid)}>{value}</Item>
 	</div>
-	</React.Fragment>
   );
 }
 
