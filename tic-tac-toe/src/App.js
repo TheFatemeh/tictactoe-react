@@ -9,6 +9,8 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
+		this.checkBlocksForWin = this.checkBlocksForWin.bind(this);
+		this.checkBlocksForDraw = this.checkBlocksForDraw.bind(this);
 	}
 
 	state = {
@@ -26,12 +28,40 @@ export default class App extends Component {
 		turn: 0
 	};
 	
+	checkBlocksForWin = (blocks) => {
+		const winStates = [
+			[0, 4, 8], [1, 4, 7], [2, 4, 6], [3, 4, 5],
+			[0, 1, 2], [6, 7, 8], [0, 3, 6], [2, 5, 8],
+		];
+		for (const winState of winStates) {
+			if (blocks[winState[0]].value !== 0) {
+				if (blocks[winState[0]].value === blocks[winState[1]].value && blocks[winState[1]].value === blocks[winState[2]].value) {
+					return blocks[winState[0]].value;
+				}
+			}
+		}
+		return 0;
+	}
+
+	checkBlocksForDraw = (blocks) => {
+		for (const block of blocks)
+			if (block.value===0) return false;
+		return true;
+	}
+
 	handleClick = (id) => {
 		let blocks = [...this.state.blocks];
 		if (blocks[id].value!==0) return;
 		blocks[id].value = this.state.turn+1;
 		this.setState({ blocks });
 		this.setState({ turn:1-this.state.turn });
+		let winner = this.checkBlocksForWin(blocks);
+		if (winner === 1)
+			console.log("X is the winner");
+		else if (winner === 2)
+			console.log("O is the winner");
+		else if (this.checkBlocksForDraw(blocks))
+			console.log("It is a draw");
 	};
 	
 	render() {
