@@ -9,10 +9,22 @@ const Item = styled(Paper)(({ theme }) => ({
 	color: theme.palette.text.primary ,
 }));
 
+function handleValue(value) {
+	if (value==1) return 'X';
+	if (value==2) return 'O';
+	return '';
+}
+
 function FormBlock({blockid, value, handleClick}) {
   return (
     <div>
-		<Item className="Item" sx={{ bgcolor: '#ACB5BA' }} onClick={() => handleClick(blockid)}>{value}</Item>
+		<Item className="Item" sx={{ bgcolor: '#ACB5BA' }} onClick={() => handleClick(blockid)}>
+			<div className="blockContainer">
+				<div className="blockCenter">
+					<p className="blockP">{handleValue(value)}</p>
+				</div>
+			</div>
+		</Item>
 	</div>
   );
 }

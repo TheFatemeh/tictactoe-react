@@ -47,6 +47,10 @@ body {
 #footerP{
 	font-size:0.7em;
 }
+.blockP {
+	margin: 0;
+	font-size:7.1vw;
+}
 
 .App {
   text-align: center;
@@ -92,7 +96,7 @@ body {
 	height: 13vw;}
 	#headerP{font-size:3em;}
 	#footerP{font-size:0.75em;}
-	
+	.blockP{font-size:10.1vw;}
 }
 
 
@@ -102,5 +106,19 @@ body {
 	height: 18vw;}
 	#headerP{font-size:3.35em;}
 	#footerP{font-size:0.75em;}
-	
+	.blockP{font-size:14.5vw;}
+}
+
+.blockContainer {
+	height: 100%;
+	position: relative;
+}
+
+.blockCenter {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
