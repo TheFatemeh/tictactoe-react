@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import React, { Component } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
@@ -10,8 +9,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function handleValue(value) {
-	if (value==1) return 'X';
-	if (value==2) return 'O';
+	if (value===1) return 'X';
+	if (value===2) return 'O';
 	return '';
 }
 

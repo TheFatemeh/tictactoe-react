@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import BLOCK from './block';
 import React, { Component } from "react";
@@ -15,6 +13,7 @@ export default class App extends Component {
 
 	state = {
 		blocks: [
+			{ id: 0, value: 0 },
 			{ id: 1, value: 0 },
 			{ id: 2, value: 0 },
 			{ id: 3, value: 0 },
@@ -23,17 +22,16 @@ export default class App extends Component {
 			{ id: 6, value: 0 },
 			{ id: 7, value: 0 },
 			{ id: 8, value: 0 },
-			{ id: 9, value: 0 },
 		],
+		turn: 0
 	};
 	
 	handleClick = (id) => {
 		let blocks = [...this.state.blocks];
-		const idx = blocks.findIndex((block) => {
-		  return block.id === id;
-		});
-		blocks[idx].value++;
+		if (blocks[id].value!==0) return;
+		blocks[id].value = this.state.turn+1;
 		this.setState({ blocks });
+		this.setState({ turn:1-this.state.turn });
 	};
 	
 	render() {
