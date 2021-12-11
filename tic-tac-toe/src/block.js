@@ -18,7 +18,7 @@ function FormBlock({blockid, value, handleClick}) {
   return (
     <div>
 		<Item className="Item" sx={{ bgcolor: '#ACB5BA' }} onClick={() => handleClick(blockid)}>
-			<div className="blockContainer">
+			<div className={"blockContainer " + handleValue(value)}>
 				<div className="blockCenter">
 					<p className="blockP">{handleValue(value)}</p>
 				</div>

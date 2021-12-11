@@ -110,8 +110,27 @@ body {
 }
 
 .blockContainer {
+	cursor: pointer;
 	height: 100%;
 	position: relative;
+	transition: all 0.15s;
+	border-radius: 4px;
+	color: #1A191E;
+}
+.blockContainer:hover {
+	background-color: #1A191E;
+	opacity: 0.5;
+}
+.blockContainer:active {
+	opacity: 1;
+}
+
+.X, .O {
+	cursor: default;
+}
+.X:hover, .O:hover {
+	background-color: initial;
+	opacity: 1;
 }
 
 .blockCenter {
