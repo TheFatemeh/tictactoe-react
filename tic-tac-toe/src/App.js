@@ -4,11 +4,13 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import BLOCK from './block';
 import React, { Component } from "react";
+import { Snackbar } from '@mui/material';
 
 export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
+		this.handleClose = this.handleClose.bind(this);
 		this.checkBlocksForWin = this.checkBlocksForWin.bind(this);
 		this.checkBlocksForDraw = this.checkBlocksForDraw.bind(this);
 	}
@@ -25,7 +27,9 @@ export default class App extends Component {
 			{ id: 7, value: 0 },
 			{ id: 8, value: 0 },
 		],
-		turn: 0
+		turn: 0,
+		open: false,
+		message: ''
 	};
 	
 	checkBlocksForWin = (blocks) => {
@@ -51,22 +55,36 @@ export default class App extends Component {
 
 	handleClick = (id) => {
 		let blocks = [...this.state.blocks];
+
 		if (blocks[id].value!==0) return;
+		if (this.state.open===true) return;
+		
 		blocks[id].value = this.state.turn+1;
-		this.setState({ blocks });
-		this.setState({ turn:1-this.state.turn });
+		this.setState({ blocks:blocks, turn:1-this.state.turn });
+		
 		let winner = this.checkBlocksForWin(blocks);
 		if (winner === 1)
-			console.log("X is the winner");
+			this.setState({open:true, message:'X is the winner'});
 		else if (winner === 2)
-			console.log("O is the winner");
+			this.setState({open:true, message:'O is the winner'});
 		else if (this.checkBlocksForDraw(blocks))
-			console.log("It is a draw");
+			this.setState({open:true, message:'It is a draw'});
 	};
 	
+	handleClose = () => {
+		this.setState({open: false})
+	};
+
 	render() {
 		return (
 			<div className="box">
+				<Snackbar
+					anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+					open={this.state.open}
+					onClose={this.handleClose}
+					message={this.state.message}
+					autoHideDuration={5000}
+				/>
 				<Box >
 					<Grid container spacing={1} >
 						<Grid container item className="row">
