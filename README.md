@@ -7,6 +7,10 @@ Implemented by Seyedeh Fatemeh Ahmadi
 
 2021 fall
 
+# Live Demo
+Live Demo available [here](https://thefatemeh.github.io/tictactoe-react/).
+
+
 # Installation and Setup Instructions
 Clone down this repository.
 
