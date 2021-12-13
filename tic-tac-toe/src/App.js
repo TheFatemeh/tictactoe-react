@@ -9,6 +9,7 @@ import { Snackbar } from '@mui/material';
 export default class App extends Component {
 	constructor(props) {
 		super(props);
+		this.turn_str = this.turn_str.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		this.checkBlocksForWin = this.checkBlocksForWin.bind(this);
@@ -84,10 +85,15 @@ export default class App extends Component {
 				{ id: 7, value: 0 },
 				{ id: 8, value: 0 },
 			],
-			turn: 0,
 			open: false
 		})
 	};
+
+	turn_str = () => {
+		if (this.state.turn===0) return 'X';
+		if (this.state.turn===1) return 'O';
+		return '';
+	}
 
 	render() {
 		return (
@@ -118,6 +124,7 @@ export default class App extends Component {
 						</Grid>
 					</Grid>
 				</Box>
+				<p><b>{this.turn_str()}</b> Turn</p>
 			</div>
 		)
 	}
